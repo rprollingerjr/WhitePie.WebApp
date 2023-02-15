@@ -8,6 +8,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.Configure<MomentsDatabaseSettings>(
 builder.Configuration.GetSection("WhitePieDatabase"));
+builder.Services.Configure<EventsDatabaseSettings>(
+builder.Configuration.GetSection("WhitePieDatabase"));
 builder.Services.AddSingleton<MomentsService>();
 builder.Services.AddSingleton<EventsService>();
 

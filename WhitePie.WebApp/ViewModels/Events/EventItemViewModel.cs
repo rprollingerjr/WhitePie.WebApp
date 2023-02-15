@@ -8,7 +8,7 @@
         public string EventDescription { get; set; }
     }
 
-    public partial class EventTime
+    public class EventTime
     {
         public DateTime FullDateTime { get; set; }
         public string AbbreviatedMonth { get; set; }

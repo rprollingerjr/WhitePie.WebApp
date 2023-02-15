@@ -13,8 +13,10 @@ namespace WhitePie.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var eventListViewModel = new EventListViewModel();
-            var eventRowViewModel = new List<EventRowViewModel>();
+            var eventListViewModel = new EventListViewModel()
+            {
+                Rows = new List<EventRowViewModel>()
+            };
 
             var leftCards = new List<EventItemViewModel>();
             var rightCards = new List<EventItemViewModel>();
@@ -25,18 +27,18 @@ namespace WhitePie.Controllers
 
                 if (events.Any())
                 {
-                    for(int i = 0; i < events.Count; i++)
+                    for(int e = 0; e < events.Count; e++)
                     {
                         var eventCard = new EventItemViewModel()
                         {
-                            EventTitle = events[i].EventName,
-                            EventDescription = events[i].EventDescription,
+                            EventTitle = events[e].EventName,
+                            EventDescription = events[e].EventDescription,
                             EventTimeInfo = new EventTime(),
-                            VenueName = events[i].Location
+                            VenueName = events[e].Location
                         };
 
 
-                        if (i % 2 == 0)
+                        if (e % 2 == 0)
                         {
                             leftCards.Add(eventCard);
                         }
@@ -46,12 +48,24 @@ namespace WhitePie.Controllers
                         }
                     }
 
-                    
+                    for (int c = 0; c < leftCards.Count; c++)
+                    {
+                        var row = new EventRowViewModel
+                        {
+                            LeftCard = leftCards[c],
+                        };
+
+                        if (c !< rightCards.Count - 1)
+                        {
+                            row.RightCard = rightCards[c];
+                        }
+                        eventListViewModel.Rows.Add(row);
+                    }
 
                 }
                 else
                 {
-                    eventRowViewModel.Add(new EventRowViewModel
+                    eventListViewModel.Rows.Add(new EventRowViewModel
                     {
                         LeftCard = new EventItemViewModel
                         {
@@ -59,16 +73,19 @@ namespace WhitePie.Controllers
                             EventDescription = "Come back soon to see upcoming events or follow Edible Mami on social media for more up-to-date information!"
                         }
                     });
-
-                    eventListViewModel.Rows.AddRange(eventRowViewModel);
                 }
             }
             catch (Exception ex)
             {
-                throw new BadHttpRequestException("The events service failed.");
+                throw new BadHttpRequestException(ex.Message);
             }
 
             return View(eventListViewModel);
+        }
+
+        private EventTime ParseEventDate(DateTime eventDate)
+        {
+            return null;
         }
     }
 }
