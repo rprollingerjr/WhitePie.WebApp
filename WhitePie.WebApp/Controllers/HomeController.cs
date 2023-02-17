@@ -29,7 +29,7 @@ namespace WhitePie.Controllers
                 foreach (var moment in moments)
                 {
                     var momentViewModel = new MomentsViewModel();
-                    momentViewModel.FileId = await _momentsService.GetMomentBytesAsync(moment.FileId);
+                    momentViewModel.FileAsBase64 = await _momentsService.GetMomentBytesAsync(moment.FileId);
                     viewModel.momentsViewModel.Add(momentViewModel);
                 }
             }

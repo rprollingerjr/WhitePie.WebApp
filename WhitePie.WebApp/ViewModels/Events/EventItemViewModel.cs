@@ -3,16 +3,21 @@
     public class EventItemViewModel
     {
         public string EventTitle { get; set; }
-        public string VenueName { get; set; }
+        public string Venue { get; set; }
+        public string Location { get; set; }
         public EventTime EventTimeInfo { get; set; }
         public string EventDescription { get; set; }
+        public string TicketUrl { get; set; }
     }
 
     public class EventTime
     {
-        public DateTime FullDateTime { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
+        public string EndDateTime { get; set; }
+        public string FullDayAndDate { get; set; }
         public string AbbreviatedMonth { get; set; }
-        public int Year { get; set; }
+        public int DayOfTheMonth { get; set; }
 
     }
 }

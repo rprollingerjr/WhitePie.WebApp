@@ -8,12 +8,14 @@ namespace WhitePie.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-        [BsonElement("Title")]
+        [BsonElement("Name")]
         public string EventName { get; set; }
-        public DateTime? EventDate { get; set; }
-
+        public DateTime? EventStartDate { get; set; }
+        public DateTime? EventEndDate { get; set; }
+        public string Venue { get; set; }
         public string Location { get; set; }
 
         public string EventDescription { get; set; }
+        public string TicketUrl { get; set; }
     }
 }

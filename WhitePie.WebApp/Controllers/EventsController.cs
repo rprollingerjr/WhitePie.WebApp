@@ -4,6 +4,7 @@ using WhitePie.ViewModels.Events;
 
 namespace WhitePie.Controllers
 {
+    [Route("[controller]")]
     public class EventsController : Controller
     {
         private readonly EventsService _eventsService;
@@ -11,15 +12,10 @@ namespace WhitePie.Controllers
         {
             _eventsService = eventsService;
         }
+
         public async Task<IActionResult> Index()
         {
-            var eventListViewModel = new EventListViewModel()
-            {
-                Rows = new List<EventRowViewModel>()
-            };
-
-            var leftCards = new List<EventItemViewModel>();
-            var rightCards = new List<EventItemViewModel>();
+            var eventListViewModel = new EventListViewModel();
 
             try
             {
@@ -27,53 +23,21 @@ namespace WhitePie.Controllers
 
                 if (events.Any())
                 {
-                    for(int e = 0; e < events.Count; e++)
+                    eventListViewModel.Events = new List<EventItemViewModel>();
+                    foreach(var item in events)
                     {
-                        var eventCard = new EventItemViewModel()
+                        eventListViewModel.Events.Add(new EventItemViewModel()
                         {
-                            EventTitle = events[e].EventName,
-                            EventDescription = events[e].EventDescription,
-                            EventTimeInfo = new EventTime(),
-                            VenueName = events[e].Location
-                        };
-
-
-                        if (e % 2 == 0)
-                        {
-                            leftCards.Add(eventCard);
-                        }
-                        else
-                        {
-                            rightCards.Add(eventCard);
-                        }
+                            EventTitle = item.EventName,
+                            Location = item.Location,
+                            Venue = item.Venue,
+                            EventDescription = item.EventDescription,
+                            EventTimeInfo = ParseEventDate(item.EventStartDate.Value, item.EventEndDate.Value),
+                            TicketUrl = item.TicketUrl
+                        });
                     }
-
-                    for (int c = 0; c < leftCards.Count; c++)
-                    {
-                        var row = new EventRowViewModel
-                        {
-                            LeftCard = leftCards[c],
-                        };
-
-                        if (c !< rightCards.Count - 1)
-                        {
-                            row.RightCard = rightCards[c];
-                        }
-                        eventListViewModel.Rows.Add(row);
-                    }
-
                 }
-                else
-                {
-                    eventListViewModel.Rows.Add(new EventRowViewModel
-                    {
-                        LeftCard = new EventItemViewModel
-                        {
-                            EventTitle = "No Events",
-                            EventDescription = "Come back soon to see upcoming events or follow Edible Mami on social media for more up-to-date information!"
-                        }
-                    });
-                }
+
             }
             catch (Exception ex)
             {
@@ -83,9 +47,17 @@ namespace WhitePie.Controllers
             return View(eventListViewModel);
         }
 
-        private EventTime ParseEventDate(DateTime eventDate)
+        private EventTime ParseEventDate(DateTime startDate, DateTime endDate)
         {
-            return null;
+            var timeInfo = new EventTime();
+
+            timeInfo.DayOfTheMonth = startDate.Day;
+            timeInfo.AbbreviatedMonth = startDate.ToString("MMM");
+            timeInfo.FullDayAndDate = startDate.ToString("dddd, dd MMMM yyyy");
+            timeInfo.StartTime = startDate.ToString("h:mm tt");
+            timeInfo.EndTime = endDate.ToString("h:mm tt");
+
+            return timeInfo;
         }
     }
 }

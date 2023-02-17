@@ -1,183 +1,269 @@
-﻿/*@import url('https://fonts.googleapis.com/css?family=Oswald');*/
-
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box
+﻿.seated-wrapper {
+    color: #000;
+    padding: 5%;
+    margin-bottom: 5%;
 }
 
-body {
-    background-color: #dadde6;
-    font-family: arial
+.seated-events-table {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.fl-left {
-    float: left
+.seated-event-row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 14px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    -webkit-transition: background 0.3s ease-in-out;
+    -o-transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
+    cursor: pointer;
 }
 
-.fl-right {
-    float: right
-}
-
-h1 {
-    text-transform: uppercase;
-    font-weight: 900;
-    border-left: 10px solid #fec500;
-    padding-left: 10px;
-    margin-bottom: 30px
-}
-
-.row {
-    overflow: hidden
-}
-
-.card {
-    display: table-row;
-    width: 49%;
-    background-color: #fff;
-    color: #989898;
-    margin-bottom: 10px;
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    border-radius: 4px;
-    position: relative
-}
-
-    .card + .card {
-        margin-left: 2%
+    .seated-event-row.seated-event-row-highlighted {
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        border-bottom: solid 1px #fff;
     }
 
-.date {
-    display: table-cell;
-    width: 25%;
-    position: relative;
-    text-align: center;
-    border-right: 2px dashed #dadde6
-}
-
-    .date:before,
-    .date:after {
-        content: "";
-        display: block;
-        width: 30px;
-        height: 30px;
-        background-color: #DADDE6;
-        position: absolute;
-        top: -15px;
-        right: -15px;
-        z-index: 1;
-        border-radius: 50%
+    .seated-event-row:hover {
+        background: rgba(0, 0, 0, 0.05);
+        -webkit-transition: background 0.1s ease-in-out;
+        -o-transition: background 0.1s ease-in-out;
+        transition: background 0.1s ease-in-out;
     }
 
-    .date:after {
-        top: auto;
-        bottom: -15px
-    }
-
-    .date time {
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%)
-    }
-
-        .date time span {
-            display: block
-        }
-
-            .date time span:first-child {
-                color: #2b2b2b;
-                font-weight: 600;
-                font-size: 250%
-            }
-
-            .date time span:last-child {
-                text-transform: uppercase;
-                font-weight: 600;
-                margin-top: -10px
-            }
-
-.card-cont {
-    display: table-cell;
-    width: 75%;
-    font-size: 85%;
-    padding: 10px 10px 30px 50px
+.seated-event-description-cells {
+    width: 65%;
 }
 
-    .card-cont h3 {
-        color: #3C3C3C;
-        font-size: 130%
-    }
-
-.row:last-child .card:last-of-type .card-cont h3 {
-    text-decoration: line-through
+.seated-event-venue-cell {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
 }
 
-.card-cont > div {
-    display: table-row
+.seated-event-venue-name {
+    width: 60%;
 }
 
-.card-cont .even-date i,
-.card-cont .even-info i,
-.card-cont .even-date time,
-.card-cont .even-info p {
-    display: table-cell
+.seated-event-venue-location {
+    width: 40%;
 }
 
-.card-cont .even-date i,
-.card-cont .even-info i {
-    padding: 5% 5% 0 0
+.seated-event-date-cell {
+    font-weight: 700;
+    text-transform: uppercase !important;
 }
 
-.card-cont .even-info p {
-    padding: 30px 50px 0 0
-}
-
-.card-cont .even-date time span {
-    display: block
-}
-
-.card-cont a {
+.seated-event-details-cell {
     display: block;
-    text-decoration: none;
-    width: 80px;
-    height: 30px;
-    background-color: #D8DDE0;
-    color: #fff;
+    opacity: 0.7;
+}
+
+.seated-event-link-cells {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.seated-event-link1,
+.seated-event-link1:visited,
+.seated-event-link2,
+.seated-event-link2:visited {
+    color: #000;
+    border: 2px solid rgba(0, 0, 0, 1);
+    background: rgba(255, 255, 255, 1);
+    border-radius: 3px;
+    display: block;
+    font-size: 12px;
+    margin: 4px 0 4px 9px;
+    overflow: hidden;
+    padding: 6px 3px;
     text-align: center;
-    line-height: 30px;
-    border-radius: 2px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-decoration: none;
+    min-width: 120px;
+    text-transform: uppercase !important;
 }
 
-.row:last-child .card:first-child .card-cont a {
-    background-color: #037FDD
-}
-
-.row:last-child .card:last-child .card-cont a {
-    background-color: #F8504C
-}
-
-@media screen and (max-width: 860px) {
-    .card {
+    .seated-event-link1:hover,
+    .seated-event-link2:hover {
+        color: #fff;
+        border: 2px solid rgba(255, 255, 255, 1);
+        background: rgba(0, 0, 0, 1);
+        border-radius: 3px;
         display: block;
-        float: none;
-        width: 100%;
-        margin-bottom: 10px
+        font-size: 12px;
+        margin: 4px 0 4px 9px;
+        overflow: hidden;
+        padding: 6px 3px;
+        text-align: center;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-decoration: none;
+        min-width: 120px;
+        text-transform: uppercase !important;
+        -webkit-transition: background 0.2s ease-in-out;
+        -o-transition: background 0.2s ease-in-out;
+        transition: background 0.2s ease-in-out;
     }
 
-        .card + .card {
-            margin-left: 0
+.seated-follow-box {
+    padding: 30px 0;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.seated-follow-text {
+    font-weight: 700;
+    text-align: center;
+}
+
+.seated-follow-link,
+.seated-follow-link:visited {
+    display: inline-block;
+    margin-top: 10px;
+    color: #000;
+    border: 2px solid rgba(0, 0, 0, 1);
+    background: rgba(255, 255, 255, 1);
+    border-radius: 3px;
+    font-size: 12px;
+    overflow: hidden;
+    padding: 12px 3px;
+    text-align: center;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-decoration: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-transform: uppercase !important;
+}
+
+    .seated-follow-link:hover {
+        color: #fff;
+        border: 2px solid rgba(255, 255, 255, 1);
+        background: rgba(0, 0, 0, 1);
+        -webkit-transition: background 0.2s ease-in-out;
+        -o-transition: background 0.2s ease-in-out;
+        transition: background 0.2s ease-in-out;
+    }
+
+.seated-modal-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 75px;
+    background: rgba(0, 0, 0, 0.8);
+    /* This is the highest possible z-index value */
+    z-index: 2147483647;
+}
+
+    .seated-modal-container .seated-modal {
+        width: 100%;
+        height: 100%;
+    }
+
+    .seated-modal-container .seated-modal-hidden {
+        display: none;
+    }
+
+    .seated-modal-container .seated-modal-loading {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .seated-modal-container .seated-modal-loading .seated-modal-loading-spinner {
+            width: 60px;
+            height: 60px;
+            color: #fff;
+            animation: spin 1s linear infinite;
         }
 
-    .card-cont .even-date,
-    .card-cont .even-info {
-        font-size: 75%
+@media screen and (max-width: 640px) {
+    .seated-modal-container {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .seated-event-link-cells {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-flow: column;
+        -ms-flex-flow: column;
+        flex-flow: column;
+    }
+
+    .seated-event-venue-name {
+        width: 90%;
+    }
+
+    .seated-event-venue-location {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .seated-event-venue-cell {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-flow: column;
+        -ms-flex-flow: column;
+        flex-flow: column;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .seated-event-row {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-flow: column;
+        -ms-flex-flow: column;
+        flex-flow: column;
+    }
+
+    .seated-event-description-cells {
+        width: 100%;
+        text-align: center;
+    }
+
+    .seated-event-venue-cell {
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-bottom: 0px;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }

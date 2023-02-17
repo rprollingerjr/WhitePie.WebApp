@@ -3,6 +3,6 @@
     public class EventListViewModel
     {
         public string PageTitle { get; set; }
-        public List<EventRowViewModel> Rows { get; set; }
+        public List<EventItemViewModel> Events { get; set; }
     }
 }
