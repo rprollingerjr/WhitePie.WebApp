@@ -18,6 +18,7 @@
         public string FullDayAndDate { get; set; }
         public string AbbreviatedMonth { get; set; }
         public int DayOfTheMonth { get; set; }
+        public int Year { get; set; }
 
     }
 }

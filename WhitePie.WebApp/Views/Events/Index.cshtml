@@ -4,31 +4,36 @@
     ViewData["Title"] = "View";
 }
 
-<section class="container">
-    <h1>Events</h1>
-    @if (Model.Events != null)
+        <section class="container">
+    @if (Model.UpcomingEvents == null && Model.PastEvents == null)
     {
-        @foreach (var item in Model.Events)
+            <h2>No upcoming events, check back soon!</h2>
+    }
+
+    @if (Model.UpcomingEvents != null)
+    {
+        <h1>Events</h1>
+        @foreach (var item in Model.UpcomingEvents)
         {
-            <div class="seated-events-table">
+            <div class="edible-events-table">
                 <!---->
-                <div class="seated-event-row">
-                    <div class="seated-event-description-cells">
-                        <div class="seated-event-date-cell">
-                            Feb 17, 2023
+                <div class="edible-event-row">
+                    <div class="edible-event-description-cells">
+                        <div class="edible-event-date-cell">
+                            @item.EventTimeInfo.AbbreviatedMonth @item.EventTimeInfo.DayOfTheMonth, @item.EventTimeInfo.Year
                             <!---->
                         </div>
-                        <div class="seated-event-venue-cell">
-                            <div class="seated-event-venue-name">@item.Venue</div>
-                            <div class="seated-event-venue-location">@item.Location</div>
+                        <div class="edible-event-venue-cell">
+                            <div class="edible-event-venue-name">@item.Venue</div>
+                            <div class="edible-event-venue-location">@item.Location</div>
                         </div>
-                        <div class="seated-event-details-cell">
+                        <div class="edible-event-details-cell">
                             @item.EventDescription
                         </div>
                     </div>
-                    <div class="seated-event-link-cells">
-                        <!---->        <div class="seated-event-link-cell1">
-                            <a class="seated-event-link1" href="@item.TicketUrl" target="_blank">
+                    <div class="edible-event-link-cells">
+                        <!---->        <div class="edible-event-link-cell1">
+                            <a class="edible-event-link" href="@item.TicketUrl" target="_blank">
                                 <!---->                Tickets
                                 <!---->
                             </a>
@@ -40,9 +45,40 @@
         }
 
     }
-    else
+
+    @if (Model.PastEvents != null)
     {
-        <h1>No upcoming events, check back soon!</h1>
+        <h1>Past Events</h1>
+        @foreach (var item in Model.PastEvents)
+        {
+                    <div class="edible-events-table">
+                        <!---->
+                        <div class="edible-event-row">
+                            <div class="edible-event-description-cells">
+                                <div class="edible-event-date-cell">
+                                    @item.EventTimeInfo.AbbreviatedMonth @item.EventTimeInfo.DayOfTheMonth, @item.EventTimeInfo.Year
+                                    <!---->
+                                </div>
+                                <div class="edible-event-venue-cell">
+                                    <div class="edible-event-venue-name">@item.Venue</div>
+                                    <div class="edible-event-venue-location">@item.Location</div>
+                                </div>
+                                <div class="edible-event-details-cell">
+                            @item.EventDescription
+                                </div>
+                            </div>
+                            <div class="edible-event-link-cells">
+                                <!---->        <div class="edible-event-link-cell1">
+                                    <button class="edible-event-link" disabled>
+                                        <!---->                Tickets
+                                        <!---->
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+        }
     }
 </section>
 

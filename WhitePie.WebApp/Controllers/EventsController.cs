@@ -20,13 +20,15 @@ namespace WhitePie.Controllers
             try
             {
                 var events = await _eventsService.GetAsync();
+                events = events.OrderByDescending(_ => _.EventStartDate).ToList();
 
                 if (events.Any())
                 {
-                    eventListViewModel.Events = new List<EventItemViewModel>();
-                    foreach(var item in events)
+                    var UpcomingEvents = new List<EventItemViewModel>();
+                    var PastEvents = new List<EventItemViewModel>();
+                    foreach (var item in events)
                     {
-                        eventListViewModel.Events.Add(new EventItemViewModel()
+                        var newEvent = new EventItemViewModel()
                         {
                             EventTitle = item.EventName,
                             Location = item.Location,
@@ -34,7 +36,24 @@ namespace WhitePie.Controllers
                             EventDescription = item.EventDescription,
                             EventTimeInfo = ParseEventDate(item.EventStartDate.Value, item.EventEndDate.Value),
                             TicketUrl = item.TicketUrl
-                        });
+                        };
+                        
+                        if (item.EventStartDate < DateTime.Now)
+                        {
+                           PastEvents.Add(newEvent);
+                        }
+                        else
+                        {
+                            UpcomingEvents.Add(newEvent);
+                        }
+
+                    }
+
+                    eventListViewModel.UpcomingEvents = UpcomingEvents;
+
+                    if (PastEvents.Any())
+                    {
+                        eventListViewModel.PastEvents = PastEvents;
                     }
                 }
 
@@ -56,6 +75,7 @@ namespace WhitePie.Controllers
             timeInfo.FullDayAndDate = startDate.ToString("dddd, dd MMMM yyyy");
             timeInfo.StartTime = startDate.ToString("h:mm tt");
             timeInfo.EndTime = endDate.ToString("h:mm tt");
+            timeInfo.Year = startDate.Year;
 
             return timeInfo;
         }

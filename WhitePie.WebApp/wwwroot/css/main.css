@@ -1334,17 +1334,18 @@ h6 {
 
         /* EVENTS */
 
-.seated-wrapper {
+.edible-wrapper {
     color: #000;
     padding: 5%;
     margin-bottom: 5%;
 }
 
-.seated-events-table {
+.edible-events-table {
     border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 5rem;
 }
 
-.seated-event-row {
+.edible-event-row {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -1359,52 +1360,51 @@ h6 {
     -webkit-transition: background 0.3s ease-in-out;
     -o-transition: background 0.3s ease-in-out;
     transition: background 0.3s ease-in-out;
-    cursor: pointer;
 }
 
-    .seated-event-row.seated-event-row-highlighted {
+    .edible-event-row.edible-event-row-highlighted {
         padding-bottom: 30px;
         margin-bottom: 30px;
         border-bottom: solid 1px #fff;
     }
 
-    .seated-event-row:hover {
+    .edible-event-row:hover {
         background: rgba(0, 0, 0, 0.05);
         -webkit-transition: background 0.1s ease-in-out;
         -o-transition: background 0.1s ease-in-out;
         transition: background 0.1s ease-in-out;
     }
 
-.seated-event-description-cells {
+.edible-event-description-cells {
     width: 65%;
 }
 
-.seated-event-venue-cell {
+.edible-event-venue-cell {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
 }
 
-.seated-event-venue-name {
+.edible-event-venue-name {
     width: 60%;
 }
 
-.seated-event-venue-location {
+.edible-event-venue-location {
     width: 40%;
 }
 
-.seated-event-date-cell {
+.edible-event-date-cell {
     font-weight: 700;
     text-transform: uppercase !important;
 }
 
-.seated-event-details-cell {
+.edible-event-details-cell {
     display: block;
     opacity: 0.7;
 }
 
-.seated-event-link-cells {
+.edible-event-link-cells {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -1415,10 +1415,9 @@ h6 {
     align-items: center;
 }
 
-.seated-event-link1,
-.seated-event-link1:visited,
-.seated-event-link2,
-.seated-event-link2:visited {
+.edible-event-link,
+.edible-event-link:visited
+{
     color: #000;
     border: 2px solid rgba(0, 0, 0, 1);
     background: rgba(255, 255, 255, 1);
@@ -1437,8 +1436,8 @@ h6 {
     text-transform: uppercase !important;
 }
 
-    .seated-event-link1:hover,
-    .seated-event-link2:hover {
+    .edible-event-link:hover
+    {
         color: #fff;
         border: 2px solid rgba(255, 255, 255, 1);
         background: rgba(0, 0, 0, 1);
@@ -1460,48 +1459,7 @@ h6 {
         transition: background 0.2s ease-in-out;
     }
 
-.seated-follow-box {
-    padding: 30px 0;
-    margin-top: 10px;
-    text-align: center;
-}
-
-.seated-follow-text {
-    font-weight: 700;
-    text-align: center;
-}
-
-.seated-follow-link,
-.seated-follow-link:visited {
-    display: inline-block;
-    margin-top: 10px;
-    color: #000;
-    border: 2px solid rgba(0, 0, 0, 1);
-    background: rgba(255, 255, 255, 1);
-    border-radius: 3px;
-    font-size: 12px;
-    overflow: hidden;
-    padding: 12px 3px;
-    text-align: center;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    text-decoration: none;
-    padding-left: 20px;
-    padding-right: 20px;
-    text-transform: uppercase !important;
-}
-
-    .seated-follow-link:hover {
-        color: #fff;
-        border: 2px solid rgba(255, 255, 255, 1);
-        background: rgba(0, 0, 0, 1);
-        -webkit-transition: background 0.2s ease-in-out;
-        -o-transition: background 0.2s ease-in-out;
-        transition: background 0.2s ease-in-out;
-    }
-
-.seated-modal-container {
+.edible-modal-container {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -1513,16 +1471,16 @@ h6 {
     z-index: 2147483647;
 }
 
-    .seated-modal-container .seated-modal {
+    .edible-modal-container .edible-modal {
         width: 100%;
         height: 100%;
     }
 
-    .seated-modal-container .seated-modal-hidden {
+    .edible-modal-container .edible-modal-hidden {
         display: none;
     }
 
-    .seated-modal-container .seated-modal-loading {
+    .edible-modal-container .edible-modal-loading {
         width: 100%;
         height: 100%;
         display: flex;
@@ -1530,7 +1488,7 @@ h6 {
         justify-content: center;
     }
 
-        .seated-modal-container .seated-modal-loading .seated-modal-loading-spinner {
+        .edible-modal-container .edible-modal-loading .edible-modal-loading-spinner {
             width: 60px;
             height: 60px;
             color: #fff;
@@ -1538,13 +1496,13 @@ h6 {
         }
 
 @media screen and (max-width: 640px) {
-    .seated-modal-container {
+    .edible-modal-container {
         padding: 0;
     }
 }
 
 @media screen and (max-width: 1024px) {
-    .seated-event-link-cells {
+    .edible-event-link-cells {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -webkit-flex-flow: column;
@@ -1552,17 +1510,17 @@ h6 {
         flex-flow: column;
     }
 
-    .seated-event-venue-name {
+    .edible-event-venue-name {
         width: 90%;
     }
 
-    .seated-event-venue-location {
+    .edible-event-venue-location {
         width: 90%;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .seated-event-venue-cell {
+    .edible-event-venue-cell {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -webkit-flex-flow: column;
@@ -1572,7 +1530,7 @@ h6 {
 }
 
 @media screen and (max-width: 580px) {
-    .seated-event-row {
+    .edible-event-row {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -webkit-flex-flow: column;
@@ -1580,12 +1538,12 @@ h6 {
         flex-flow: column;
     }
 
-    .seated-event-description-cells {
+    .edible-event-description-cells {
         width: 100%;
         text-align: center;
     }
 
-    .seated-event-venue-cell {
+    .edible-event-venue-cell {
         -webkit-box-align: center;
         -webkit-align-items: center;
         -ms-flex-align: center;
