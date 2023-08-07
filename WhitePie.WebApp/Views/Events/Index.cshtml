@@ -12,10 +12,53 @@
 
     @if (Model.UpcomingEvents != null)
     {
-        <h1>Events</h1>
-        @foreach (var item in Model.UpcomingEvents)
+        <div class="mb-4">
+        <h1>Upcoming Events</h1>
+        @if (Model.UpcomingEvents.Count == 0)
+        {
+            @: No upcoming events. Check back soon or follow on Instagram for information!
+        }
+        else
         {
             <div class="edible-events-table">
+            @foreach (var item in Model.UpcomingEvents)
+            {
+                    <!---->
+                    <div class="edible-event-row">
+                        <div class="edible-event-description-cells">
+                            <div class="edible-event-date-cell">
+                                @item.EventTimeInfo.AbbreviatedMonth @item.EventTimeInfo.DayOfTheMonth, @item.EventTimeInfo.Year
+                                <!---->
+                            </div>
+                            <div class="edible-event-venue-cell">
+                                <div class="edible-event-venue-name">@item.EventTitle</div>
+                                <div class="edible-event-venue-location">@item.Location</div>
+                            </div>
+                            <div class="edible-event-details-cell">
+                                @item.Venue
+                            </div>
+                        </div>
+                        <div class="edible-event-link-cells">
+                            <!---->        <div class="edible-event-link-cell1">
+                                <a class="edible-event-link" href="@item.TicketUrl" target="_blank">
+                                    <!---->                Tickets
+                                    <!---->
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+            }
+            </div>
+        }
+        </div>
+    }
+
+    @if (Model.PastEvents != null)
+    {
+        <h2>Past Events</h2>
+        <div class="edible-events-table">
+        @foreach (var item in Model.PastEvents)
+        {
                 <!---->
                 <div class="edible-event-row">
                     <div class="edible-event-description-cells">
@@ -24,61 +67,25 @@
                             <!---->
                         </div>
                         <div class="edible-event-venue-cell">
-                            <div class="edible-event-venue-name">@item.Venue</div>
+                            <div class="edible-event-venue-name">@item.EventTitle</div>
                             <div class="edible-event-venue-location">@item.Location</div>
                         </div>
                         <div class="edible-event-details-cell">
-                            @item.EventDescription
+                    @item.Venue
                         </div>
                     </div>
                     <div class="edible-event-link-cells">
                         <!---->        <div class="edible-event-link-cell1">
-                            <a class="edible-event-link" href="@item.TicketUrl" target="_blank">
+                            <button class="edible-event-link btn btn-secondary" disabled>
                                 <!---->                Tickets
                                 <!---->
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-            </div>
         }
-
-    }
-
-    @if (Model.PastEvents != null)
-    {
-        <h1>Past Events</h1>
-        @foreach (var item in Model.PastEvents)
-        {
-                    <div class="edible-events-table">
-                        <!---->
-                        <div class="edible-event-row">
-                            <div class="edible-event-description-cells">
-                                <div class="edible-event-date-cell">
-                                    @item.EventTimeInfo.AbbreviatedMonth @item.EventTimeInfo.DayOfTheMonth, @item.EventTimeInfo.Year
-                                    <!---->
-                                </div>
-                                <div class="edible-event-venue-cell">
-                                    <div class="edible-event-venue-name">@item.Venue</div>
-                                    <div class="edible-event-venue-location">@item.Location</div>
-                                </div>
-                                <div class="edible-event-details-cell">
-                            @item.EventDescription
-                                </div>
-                            </div>
-                            <div class="edible-event-link-cells">
-                                <!---->        <div class="edible-event-link-cell1">
-                                    <button class="edible-event-link" disabled>
-                                        <!---->                Tickets
-                                        <!---->
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-        }
+        </div>
     }
 </section>
 
