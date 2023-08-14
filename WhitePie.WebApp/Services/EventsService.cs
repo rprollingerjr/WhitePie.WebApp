@@ -10,7 +10,7 @@ namespace WhitePie.Services
         private readonly IMongoCollection<Event> _eventsCollection;
 
         public EventsService(
-            IOptions<EventsDatabaseSettings> eventsDatabaseSettings)
+            IOptions<WhitePieDatabaseSettings> eventsDatabaseSettings)
         {
             var mongoClient = new MongoClient(
                 eventsDatabaseSettings.Value.ConnectionString);

@@ -13,7 +13,7 @@ namespace WhitePie.Services
         private readonly IMongoCollection<Moment> _momentsCollection;
         private readonly IMongoDatabase _database;
         public MomentsService(
-            IOptions<MomentsDatabaseSettings> momentsDatabaseSettings)
+            IOptions<WhitePieDatabaseSettings> momentsDatabaseSettings)
         {
             var mongoClient = new MongoClient(
                 momentsDatabaseSettings.Value.ConnectionString);
