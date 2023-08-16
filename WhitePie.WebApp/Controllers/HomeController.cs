@@ -19,7 +19,7 @@ namespace WhitePie.Controllers
         {
             var viewModel = new IndexViewModel()
             {
-                momentsViewModel = new List<MomentsViewModel>()
+                momentsViewModel = new List<Lazy<MomentsViewModel>>()
             };
 
             try
@@ -28,9 +28,9 @@ namespace WhitePie.Controllers
 
                 foreach (var moment in moments)
                 {
-                    var momentViewModel = new MomentsViewModel();
-                    momentViewModel.Id = moment.FileId;
-                    momentViewModel.Extension = "jpg";
+                    var momentViewModel = new Lazy<MomentsViewModel>();
+                    momentViewModel.Value.Id = moment.FileId;
+                    momentViewModel.Value.Extension = "jpg";
                     viewModel.momentsViewModel.Add(momentViewModel);
                 }
             }

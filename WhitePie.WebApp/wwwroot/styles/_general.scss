@@ -44,26 +44,32 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-primary);
 }
 
-#main {
-    margin-top:125px;
-    margin-bottom:50px;
-}
-
-.btn-get-started {
+.em-button .yellow, .red {
     font-family: var(--font-primary);
     font-weight: 400;
     font-size: 14px;
-    display: inline-block;
+    display: block;
     padding: 12px 40px;
     border-radius: 4px;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: 0.3s;
     color: #fff;
+}
+
+.em-button .red {
     background: var(--color-primary);
 
     &:hover {
-        background: lighten($primary, 5);
+        background: darken($primary, 5);
+    }
+}
+
+.em-button .yellow {
+    background: var(--color-secondary);
+
+    &:hover {
+        background: lighten($secondary, 9);
     }
 }
 

@@ -5,74 +5,32 @@
     ViewData["PageHeader"] = "Upcoming Events";
 }
 
-    @if (Model.UpcomingEvents == null && Model.PastEvents == null)
-    {
-                <h2>No upcoming events, check back soon!</h2>
-    }
-
-        <div class="events_area">
-            <div class="container">
-                @if (Model.UpcomingEvents.Count == 0)
-                {
-                    <span>No upcoming events, <a href="https://instagram.com/ediblemam1">follow us on Instagram in the meantime!</a></span>
-                }
-                else
-                {
-                    <div class="row">
-                    @foreach (var item in Model.UpcomingEvents)
-                    {
-                        <div class="col-lg-3 col-md-6">
-                            <div class="single_event position-relative">
-                                <div class="event_details">
-                                    <span>@item.EventTimeInfo.Year</span>
-                                    <div class="d-flex mb-4">
-                                            <div class="date"><span>@item.EventTimeInfo.DayOfTheMonth</span> @item.EventTimeInfo.AbbreviatedMonth</div>
-                                        <div class="time-location">
-                                            <p><span class="ti-time mr-2"></span> @item.EventTimeInfo.StartTime - @item.EventTimeInfo.EndTime</p>
-                                            <p><span class="bi bi-pin-map mr-2"></span> @item.Location</p>
-                                        </div>
-                                    </div>
-                                    <p>
-                                        @item.EventTitle
-                                    </p>
-                                        @if (!string.IsNullOrWhiteSpace(item.TicketUrl)) {
-                                            <a href="@item.TicketUrl" class="btn btn-primary rounded-0 mt-3">Tickets</a>
-                                        }
-                                        else
-                                        {
-                                            <button class="btn btn-secondary rounded-0 mt-3">Free Entry!</button>
-                                        }
-                                    </div>
-                            </div>
-                        </div>
-                    }
-                    </div>
-                }
-            </div>
-        <div id="past_events" style="display:none;">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="mt-4 mb-4">Past Events</h2>
-                </div>
+    <div class="events_area">
+        <div class="container">
+            @if (Model.UpcomingEvents.Count == 0)
+            {
+                <span>No upcoming events, <a href="https://instagram.com/ediblemam1">follow us on Instagram in the meantime!</a></span>
+            }
+            else
+            {
                 <div class="row">
-                    @foreach (var item in Model.PastEvents)
-                    {
-                        <div class="col-lg-3 col-md-6">
-                            <div class="single_event position-relative">
-                                <div class="event_details" style="background:rgba(169, 169, 169, 0.3);">
-                                    <span>@item.EventTimeInfo.Year</span>
-                                    <div class="d-flex mb-4">
+                @foreach (var item in Model.UpcomingEvents)
+                {
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single_event position-relative">
+                            <div class="event_details">
+                                <span>@item.EventTimeInfo.Year</span>
+                                <div class="d-flex mb-4">
                                         <div class="date"><span>@item.EventTimeInfo.DayOfTheMonth</span> @item.EventTimeInfo.AbbreviatedMonth</div>
-                                        <div class="time-location">
-                                            <p><span class="ti-time mr-2"></span> @item.EventTimeInfo.StartTime - @item.EventTimeInfo.EndTime</p>
-                                            <p><span class="bi bi-pin-map mr-2"></span> @item.Location</p>
-                                        </div>
+                                    <div class="time-location">
+                                        <p><span class="ti-time mr-2"></span> @item.EventTimeInfo.StartTime - @item.EventTimeInfo.EndTime</p>
+                                        <p><span class="bi bi-pin-map mr-2"></span> @item.Location</p>
                                     </div>
-                                    <p>
-                                        @item.EventTitle
-                                    </p>
-                                    @if (!string.IsNullOrWhiteSpace(item.TicketUrl))
-                                    {
+                                </div>
+                                <p>
+                                    @item.EventTitle
+                                </p>
+                                    @if (!string.IsNullOrWhiteSpace(item.TicketUrl)) {
                                         <a href="@item.TicketUrl" class="btn btn-primary rounded-0 mt-3">Tickets</a>
                                     }
                                     else
@@ -80,19 +38,60 @@
                                         <button class="btn btn-secondary rounded-0 mt-3">Free Entry!</button>
                                     }
                                 </div>
+                        </div>
+                    </div>
+                }
+                </div>
+            }
+        </div>
+    <div id="past_events" style="display:none;">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="mt-4 mb-4">Past Events</h2>
+            </div>
+            <div class="row">
+                @foreach (var item in Model.PastEvents)
+                {
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single_event position-relative">
+                            <div class="event_details" style="background:rgba(169, 169, 169, 0.3);">
+                                <span>@item.EventTimeInfo.Year</span>
+                                <div class="d-flex mb-4">
+                                    <div class="date"><span>@item.EventTimeInfo.DayOfTheMonth</span> @item.EventTimeInfo.AbbreviatedMonth</div>
+                                    <div class="time-location">
+                                        <p><span class="ti-time mr-2"></span> @item.EventTimeInfo.StartTime - @item.EventTimeInfo.EndTime</p>
+                                        <p><span class="bi bi-pin-map mr-2"></span> @item.Location</p>
+                                    </div>
+                                </div>
+                                <p>
+                                    @item.EventTitle
+                                </p>
+                                @if (!string.IsNullOrWhiteSpace(item.TicketUrl))
+                                {
+                                    <a href="@item.TicketUrl" class="btn btn-primary rounded-0 mt-3">Tickets</a>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-secondary rounded-0 mt-3">Free Entry!</button>
+                                }
                             </div>
                         </div>
-                    }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    @if (Model.PastEvents != null && Model.PastEvents.Count > 0)
+    {
+        <div class="container">
+            <div class="row col-lg-3 ms-auto me-auto mb-3">
+                <div class="text-center pt-lg-5 pt-3">
+                    <div class="em-button">
+                        <a href="#" onclick="javascript:document.getElementById('past_events').style.display = 'block'" class="red">View All Events</a>
+                    </div>
                 </div>
             </div>
         </div>
-        @if (Model.PastEvents != null && Model.PastEvents.Count > 0)
-        {
-            <div class="col-lg-12 mb-3">
-                <div class="text-center pt-lg-5 pt-3">
-                    <a href="#" onclick="javascript:document.getElementById('past_events').style.display = 'block'" class="btn-get-started">View All Events</a>
-                </div>
-            </div>
-        }
-            </div>
+    }
+    </div>
         

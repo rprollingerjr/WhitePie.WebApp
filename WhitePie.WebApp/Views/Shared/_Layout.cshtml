@@ -32,10 +32,7 @@
         <div class="container-fluid d-flex align-items-center justify-content-between">
 
             <a href="@Url.Action("Index", "Home")" class="logo d-flex align-items-center  me-auto me-lg-0">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
-@*                <i class="pizza-girl"></i>
-*@                <img src="~/img/em-horizontal.png" height="145" alt="">
-                @*<h1>PhotoFolio</h1>*@
+                <img src="~/img/em-horizontal.png" height="145" alt=""/>
             </a>
 
             <nav id="navbar" class="navbar">
@@ -54,6 +51,14 @@
 
         </div>
     </header><!-- End Header -->
+
+    <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <partial name="_@controllerName" />
+            </div>
+        </div>
+    </section><!-- End Hero Section -->
 
     <main id="main">
         @if (TempData[WhitePie.WebApp.Controllers.TempDataKey.AlertDanger] != null)
