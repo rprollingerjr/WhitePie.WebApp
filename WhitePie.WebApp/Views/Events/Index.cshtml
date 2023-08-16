@@ -10,44 +10,45 @@
                 <h2>No upcoming events, check back soon!</h2>
     }
 
-        @if (Model.UpcomingEvents.Count == 0)
-        {
-            @: No upcoming events. Check back soon or follow on Instagram for information!
-        }
-        else
-        {
-            <div class="events_area">
-                <div class="container">
+        <div class="events_area">
+            <div class="container">
+                @if (Model.UpcomingEvents.Count == 0)
+                {
+                    <span>No upcoming events, <a href="https://instagram.com/ediblemam1">follow us on Instagram in the meantime!</a></span>
+                }
+                else
+                {
                     <div class="row">
                     @foreach (var item in Model.UpcomingEvents)
                     {
-                            <div class="col-lg-3 col-md-6">
-                                <div class="single_event position-relative">
-                                    <div class="event_details">
-                                        <span>@item.EventTimeInfo.Year</span>
-                                        <div class="d-flex mb-4">
-                                                <div class="date"><span>@item.EventTimeInfo.DayOfTheMonth</span> @item.EventTimeInfo.AbbreviatedMonth</div>
-                                            <div class="time-location">
-                                                <p><span class="ti-time mr-2"></span> @item.EventTimeInfo.StartTime - @item.EventTimeInfo.EndTime</p>
-                                                <p><span class="bi bi-pin-map mr-2"></span> @item.Location</p>
-                                            </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="single_event position-relative">
+                                <div class="event_details">
+                                    <span>@item.EventTimeInfo.Year</span>
+                                    <div class="d-flex mb-4">
+                                            <div class="date"><span>@item.EventTimeInfo.DayOfTheMonth</span> @item.EventTimeInfo.AbbreviatedMonth</div>
+                                        <div class="time-location">
+                                            <p><span class="ti-time mr-2"></span> @item.EventTimeInfo.StartTime - @item.EventTimeInfo.EndTime</p>
+                                            <p><span class="bi bi-pin-map mr-2"></span> @item.Location</p>
                                         </div>
-                                        <p>
-                                            @item.EventTitle
-                                        </p>
-                                            @if (!string.IsNullOrWhiteSpace(item.TicketUrl)) {
-                                                <a href="@item.TicketUrl" class="btn btn-primary rounded-0 mt-3">Tickets</a>
-                                            }
-                                            else
-                                            {
-                                                <button class="btn btn-secondary rounded-0 mt-3">Free Entry!</button>
-                                            }
-                                        </div>
-                                </div>
+                                    </div>
+                                    <p>
+                                        @item.EventTitle
+                                    </p>
+                                        @if (!string.IsNullOrWhiteSpace(item.TicketUrl)) {
+                                            <a href="@item.TicketUrl" class="btn btn-primary rounded-0 mt-3">Tickets</a>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-secondary rounded-0 mt-3">Free Entry!</button>
+                                        }
+                                    </div>
                             </div>
+                        </div>
                     }
                     </div>
-                </div>
+                }
+            </div>
         <div id="past_events" style="display:none;">
             <div class="container">
                 <div class="text-center">
@@ -58,7 +59,7 @@
                     {
                         <div class="col-lg-3 col-md-6">
                             <div class="single_event position-relative">
-                                <div class="event_details" style="background:rgba(255, 0, 0, 0.5);">
+                                <div class="event_details" style="background:rgba(169, 169, 169, 0.3);">
                                     <span>@item.EventTimeInfo.Year</span>
                                     <div class="d-flex mb-4">
                                         <div class="date"><span>@item.EventTimeInfo.DayOfTheMonth</span> @item.EventTimeInfo.AbbreviatedMonth</div>
@@ -94,4 +95,4 @@
             </div>
         }
             </div>
-        }
+        
