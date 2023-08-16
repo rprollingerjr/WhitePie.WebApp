@@ -29,7 +29,7 @@
 
     <!-- ======= Header ======= -->
     <header id="header" class="header d-flex align-items-center fixed-top">
-        <div class="container-fluid d-flex align-items-center justify-content-evenly">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
 
             <a href="@Url.Action("Index", "Home")" class="logo d-flex align-items-center  me-auto me-lg-0">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
@@ -47,7 +47,7 @@
 
             <div class="header-social-links">
                 <a href="https://www.instagram.com/ediblemam1/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="@Url.Action("Contact", "Contact")"><i class="bi bi-envelope"></i></a>
+                <a href="@Url.Action("Index", "Contact")"><i class="bi bi-envelope"></i></a>
             </div>
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
@@ -56,15 +56,43 @@
     </header><!-- End Header -->
 
     <main id="main" data-aos="fade" data-aos-delay="1500">
+        @if (TempData[WhitePie.WebApp.Controllers.TempDataKey.AlertDanger] != null)
+        {
+            <div class="row" role="alert">
+                <div class="col-12 col-md-6 offset-md-3">
+                    <div class="alert alert-danger">@Html.Raw(TempData[WhitePie.WebApp.Controllers.TempDataKey.AlertDanger])</div>
+                </div>
+            </div>
+        }
+        @if (TempData[WhitePie.WebApp.Controllers.TempDataKey.AlertWarning] != null)
+        {
+            <div class="row">
+                <div class="col-12 col-md-6 offset-md-3">
+                    <div class="alert alert-warning">@Html.Raw(TempData[WhitePie.WebApp.Controllers.TempDataKey.AlertWarning])</div>
+                </div>
+            </div>
+        }
+        @if (TempData[WhitePie.WebApp.Controllers.TempDataKey.AlertSuccess] != null)
+        {
+            <div class="row">
+                <div class="col-12 col-md-6 offset-md-3">
+                    <div class="alert alert-success">@Html.Raw(TempData[WhitePie.WebApp.Controllers.TempDataKey.AlertSuccess])</div>
+                </div>
+            </div>
+        }
+        @if (TempData[WhitePie.WebApp.Controllers.TempDataKey.AlertInfo] != null)
+        {
+            <div class="row">
+                <div class="col-12 col-md-6 offset-md-3">
+                    <div class="alert alert-info">@Html.Raw(TempData[WhitePie.WebApp.Controllers.TempDataKey.AlertInfo])</div>
+                </div>
+            </div>
+        }
         @RenderBody()
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
     <footer class="text-center">
-        <!-- Grid container -->
-        <div class="container pt-4">
-            <a asp-action="Index" asp-controller="Events" class="btn-get-started">See upcoming Events!</a>
-        </div>
         <!-- Grid container -->
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">

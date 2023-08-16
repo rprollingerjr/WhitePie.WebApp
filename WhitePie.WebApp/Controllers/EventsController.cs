@@ -20,7 +20,7 @@ namespace WhitePie.Controllers
             try
             {
                 var events = await _eventsService.GetAsync();
-                events = events.OrderByDescending(_ => _.EventStartDate).ToList();
+                events = events.OrderBy(_ => _.EventStartDate).ToList();
 
                 if (events.Any())
                 {

@@ -29,7 +29,8 @@ namespace WhitePie.Controllers
                 foreach (var moment in moments)
                 {
                     var momentViewModel = new MomentsViewModel();
-                    momentViewModel.FileAsBase64 = await _momentsService.GetMomentBytesAsync(moment.FileId);
+                    momentViewModel.Id = moment.FileId;
+                    momentViewModel.Extension = "jpg";
                     viewModel.momentsViewModel.Add(momentViewModel);
                 }
             }
@@ -45,6 +46,12 @@ namespace WhitePie.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public async Task<IActionResult> Image(string Id, string Extension)
+        {
+            var fileBytes = await _momentsService.GetMomentBytesAsync(Id);
+            return File(fileBytes, $"image/{Extension}");
         }
     }
 }

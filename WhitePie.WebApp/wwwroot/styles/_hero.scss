@@ -12,9 +12,7 @@
     h2 {
         margin: 0 0 10px 0;
         font-size: 38px;
-        font-weight: 700;
         color: #fff;
-        font-family: var(--font-secondary);
 
         span {
             position: relative;
@@ -36,27 +34,9 @@
     }
 
     p {
-        color: rgba(255, 255, 255, .6);
+        color: rgba(255, 255, 255);
         margin-bottom: 30px;
-        font-size: 18px;
-    }
-
-    .btn-get-started {
-        font-family: var(--font-primary);
-        font-weight: 400;
-        font-size: 14px;
-        display: inline-block;
-        padding: 12px 40px;
-        border-radius: 4px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        transition: 0.3s;
-        color: #fff;
-        background: var(--color-primary);
-
-        &:hover {
-            background: lighten($primary, 5);
-        }
+        font-size: 16px;
     }
 
     @media (max-width: 768px) {

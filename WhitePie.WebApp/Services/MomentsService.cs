@@ -31,7 +31,7 @@ namespace WhitePie.Services
         public async Task<Moment> GetAsync(string id) =>
             await _momentsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-        public async Task<string> GetMomentBytesAsync(string id)
+        public async Task<byte[]> GetMomentBytesAsync(string id)
         {
             var bucket = new GridFSBucket(_database, new GridFSBucketOptions
             {
@@ -41,9 +41,7 @@ namespace WhitePie.Services
 
             var fileObjectId = ObjectId.Parse(id);
 
-            var file = await bucket.DownloadAsBytesAsync(fileObjectId);
-
-            return Convert.ToBase64String(file);
+            return await bucket.DownloadAsBytesAsync(fileObjectId);
         }
     }
 }

@@ -5,8 +5,8 @@ namespace WhitePie.ViewModels
 {
     public class MomentsViewModel
     {
+        public string Id { get; set; }
         public string AltText { get; set; }
-        public string FileAsBase64 { get; set; }
         public string Extension { get; set; }
     }
 }
