@@ -18,9 +18,8 @@ namespace WhitePie.WebApp.Controllers
             MimeMessage mail = new MimeMessage();
             mail.From.Add(new MailboxAddress("EdibleMami Team", "management@ediblemami.com"));
             mail.ReplyTo.Add(new MailboxAddress(name, email));
-            mail.To.Add(MailboxAddress.Parse("r.p.rollinger@gmail.com"));
-            //mail.To.Add(MailboxAddress.Parse("management@ediblemami.com"));
-            //mail.Cc.Add(MailboxAddress.Parse("vanessa@ediblemami.com"));
+            mail.To.Add(MailboxAddress.Parse("management@ediblemami.com"));
+            mail.Cc.Add(MailboxAddress.Parse("vanessa@ediblemami.com"));
 
             mail.Subject = subject;
             mail.Body = new TextPart("plain")
