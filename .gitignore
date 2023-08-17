@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/WhitePie.WebApp/wwwroot/vendor/glightbox/js/glightbox.es5.min.js
+/WhitePie.WebApp/wwwroot/vendor/glightbox/js/glightbox.es5.js
