@@ -37,8 +37,8 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a href="@Url.Action("Index", "Home")" class="active">Home</a></li>
-                    <li><a href="@Url.Action("Index", "Events")">Events</a></li>
+                    <li><a href="@Url.Action("Index", "Home")" class="@(controllerName == "Home" ? "active" : "")">Home</a></li>
+                    <li><a href="@Url.Action("Index", "Events")" class="@(controllerName == "Events" ? "active" : "")">Events</a></li>
                 </ul>
             </nav><!-- .navbar -->
 

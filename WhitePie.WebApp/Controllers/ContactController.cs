@@ -16,10 +16,10 @@ namespace WhitePie.WebApp.Controllers
         public IActionResult SendMessage(string name, string email, string phone, string subject, string message)
         {
             MimeMessage mail = new MimeMessage();
-            mail.From.Add(new MailboxAddress("EdibleMami Team", "management@ediblemami.com"));
+            mail.From.Add(new MailboxAddress(name, "management@ediblemami.com"));
             mail.ReplyTo.Add(new MailboxAddress(name, email));
             mail.To.Add(MailboxAddress.Parse("management@ediblemami.com"));
-            mail.Cc.Add(MailboxAddress.Parse("vanessa@ediblemami.com"));
+            mail.Bcc.Add(MailboxAddress.Parse("vanessa@ediblemami.com"));
 
             mail.Subject = subject;
             mail.Body = new TextPart("plain")
@@ -32,7 +32,7 @@ namespace WhitePie.WebApp.Controllers
             try
             {
                 client.Connect("smtp.gmail.com", 465, true);
-                client.Authenticate("r.p.rollinger@gmail.com", "vxzrwvzogcrrvjrr");
+                client.Authenticate("management.ediblemami@gmail.com", "foolvuyuqixcmjhl");
                 client.Send(mail);
                 TempData[TempDataKey.AlertSuccess] = "Your message was sent, thank you!";
             }
