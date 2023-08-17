@@ -19,7 +19,7 @@ namespace WhitePie.Controllers
         {
             var viewModel = new IndexViewModel()
             {
-                momentsViewModel = new List<Lazy<MomentsViewModel>>()
+                momentsViewModel = new List<MomentsViewModel>()
             };
 
             try
@@ -28,9 +28,9 @@ namespace WhitePie.Controllers
 
                 foreach (var moment in moments)
                 {
-                    var momentViewModel = new Lazy<MomentsViewModel>();
-                    momentViewModel.Value.Id = moment.FileId;
-                    momentViewModel.Value.Extension = "jpg";
+                    var momentViewModel = new MomentsViewModel();
+                    momentViewModel.Id = moment.FileId;
+                    momentViewModel.Extension = "jpg";
                     viewModel.momentsViewModel.Add(momentViewModel);
                 }
             }
@@ -51,6 +51,7 @@ namespace WhitePie.Controllers
         public async Task<IActionResult> Image(string Id, string Extension)
         {
             var fileBytes = await _momentsService.GetMomentBytesAsync(Id);
+            
             return File(fileBytes, $"image/{Extension}");
         }
     }
