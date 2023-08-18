@@ -3,25 +3,41 @@
     ViewData["Title"] = "Home";
 }
 
-    <!-- ======= Gallery Section ======= -->
-    <section id="gallery" class="gallery">
-        <div class="container-fluid">
+<div class="page-header d-flex align-items-center">
+    <div class="container position-relative">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+                <p><img src="~/img/pizza.png" style="max-height:250px;" /></p>
+                <div class="vstack gap-3">
+                    <div class="em-button">
+                        <a asp-action="Index" asp-controller="Events" class="red">See upcoming Events!</a>
+                    </div>
+                    <div class="em-button">
+                        <a asp-action="Index" asp-controller="Contact" class="yellow">Book for Catering</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-            <div class="row gy-4 justify-content-center">
-                @foreach (var moment in Model.momentsViewModel)
-                {
-                        <div class="col-xl-3 col-lg-4 col-md-6">
-                            <div class="gallery-item h-100">
-                        <img src="@Url.Action("Image", "Home", new { moment.Id, moment.Extension })" class="img-fluid" alt="@moment.AltText" loading="lazy">
-                             <div class="gallery-links d-flex align-items-center justify-content-center">
-                                <a href="@Url.Action("Image", "Home", new { moment.Id, Extension = "jpg" })" title="@moment.AltText" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                        </div>
-                            </div>
-                        </div>
-
-                        <!-- End Gallery Item -->
-                }
+<!-- ======= Gallery Section ======= -->
+<section id="gallery" class="gallery">
+<div class="container-fluid" data-aos="fade-up">
+    <div class="row gy-4 justify-content-center">
+        @foreach (var moment in Model.momentsViewModel)
+        {
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="gallery-item h-100">
+                    <img src="@Url.Action("Image", "Home", new { moment.Id, moment.Extension })" class="img-fluid" alt="@moment.AltText" loading="lazy">
+                    <div class="gallery-links d-flex align-items-center justify-content-center">
+                        <a href="@Url.Action("Image", "Home", new { moment.Id, moment.Extension })" title="@moment.AltText" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                    </div>
+                </div>
             </div>
 
-        </div>
-    </section><!-- End Gallery Section -->
+            <!-- End Gallery Item -->
+        }
+    </div>
+</div>
+</section><!-- End Gallery Section -->

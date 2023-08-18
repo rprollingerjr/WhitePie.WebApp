@@ -158,35 +158,34 @@ h1, h2, h3, h4, h5, h6 {
 # Scroll top button
 --------------------------------------------------------------*/
 .scroll-top {
-  position: fixed;
-  visibility: hidden;
-  opacity: 0;
-  right:15px;
-  bottom: -15px;
-  z-index: 99999;
-  background: var(--color-primary);
-  width: 44px;
-  height: 44px;
-  border-radius: 50px;
-  transition: all 0.4s;
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    right: 15px;
+    bottom: -15px;
+    z-index: 99999;
+    background: var(--color-primary);
+    width: 44px;
+    height: 44px;
+    border-radius: 50px;
+    transition: all 0.4s;
 
-  i {
-    font-size: 24px;
-    color: #fff;
-    line-height: 0;
-  }
+    i {
+        font-size: 24px;
+        color: #fff;
+        line-height: 0;
+    }
 
-  &:hover  {
-    background: rgba($primary, .8);
-    color: #fff;
-  }
+    &:hover {
+        background: rgba($primary, .8);
+        color: #fff;
+    }
 
-  &.active {
-    visibility: visible;
-    opacity: 1;
-    bottom: 15px;
-  }
-
+    &.active {
+        visibility: visible;
+        opacity: 1;
+        bottom: 15px;
+    }
 }
 
 /*--------------------------------------------------------------

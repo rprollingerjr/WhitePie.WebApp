@@ -19,5 +19,7 @@ namespace WhitePie.Models
         public DateTime DateAdded { get; set; }
         [BsonElement("file_id")]
         public string FileId { get; set; }
+        [BsonElement("extension")]
+        public string Extension { get; set; }
     }
 }

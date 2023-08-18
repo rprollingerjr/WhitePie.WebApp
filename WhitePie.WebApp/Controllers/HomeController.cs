@@ -17,21 +17,17 @@ namespace WhitePie.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var viewModel = new IndexViewModel()
+            var viewModel = new IndexViewModel
             {
                 momentsViewModel = new List<MomentsViewModel>()
             };
-
             try
             {
                 var moments = await _momentsService.GetAsync();
 
-                foreach (var moment in moments)
+                foreach (var moment in moments) 
                 {
-                    var momentViewModel = new MomentsViewModel();
-                    momentViewModel.Id = moment.FileId;
-                    momentViewModel.Extension = "jpg";
-                    viewModel.momentsViewModel.Add(momentViewModel);
+                    viewModel.momentsViewModel.Add(new MomentsViewModel(moment));
                 }
             }
             catch (Exception ex)
