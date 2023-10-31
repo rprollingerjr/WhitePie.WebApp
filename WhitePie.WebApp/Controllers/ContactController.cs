@@ -30,7 +30,7 @@ namespace WhitePie.WebApp.Controllers
 
             try
             {
-                client.Connect("smtp.gmail.com", 587, true);
+                client.Connect("smtp.gmail.com", 465, true);
                 client.Authenticate("r.p.rollinger@gmail.com", "wxuwqwfqqnsgkklu");
                 client.Send(mail);
                 TempData[TempDataKey.AlertSuccess] = "Your message was sent, thank you!";
