@@ -19,6 +19,8 @@ namespace WhitePie.WebApp.Controllers
             mail.From.Add(new MailboxAddress(name, "management@ediblemami.com"));
             mail.ReplyTo.Add(new MailboxAddress(name, email));
             mail.To.Add(MailboxAddress.Parse("management@ediblemami.com"));
+            mail.Bcc.Add(MailboxAddress.Parse("ediblemami137@gmail.com"));
+            mail.Bcc.Add(MailboxAddress.Parse("r.p.rollinger@gmail.com"));
 
             mail.Subject = subject;
             mail.Body = new TextPart("plain")
