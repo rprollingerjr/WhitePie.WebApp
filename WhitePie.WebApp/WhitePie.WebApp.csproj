@@ -11,7 +11,7 @@
     <PackageReference Include="BuildWebCompiler" Version="1.12.405" />
     <PackageReference Include="MailKit" Version="4.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="6.0.14" />
-    <PackageReference Include="Microsoft.Build.Framework" Version="17.7.0" />
+    <PackageReference Include="Microsoft.Build.Framework" Version="17.10.4" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.17" />
     <PackageReference Include="MongoDB.Driver" Version="2.19.0" />
     <PackageReference Include="MongoDB.Driver.GridFS" Version="2.19.0" />
