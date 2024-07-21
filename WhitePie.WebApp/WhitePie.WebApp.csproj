@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier2022" Version="2.9.9" />
-    <PackageReference Include="BuildWebCompiler2022" Version="1.14.10" />
     <PackageReference Include="MailKit" Version="4.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="6.0.14" />
     <PackageReference Include="Microsoft.Build.Framework" Version="17.10.4" />
