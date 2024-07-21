@@ -20,8 +20,18 @@ builder.Configuration
     .AddEnvironmentVariables()
     .AddUserSecrets<Program>();
 
-var whitePieDbConnectionString = builder.Configuration["ConnectionStrings:DatabaseConnectionString"];
-var whitePieDbDatabaseName = builder.Configuration["WhitePieDbSettings:DatabaseName"];
+string whitePieDbConnectionString;
+string whitePieDbDatabaseName;
+if (string.Equals(builder.Environment.EnvironmentName, "Development"))
+{
+    whitePieDbConnectionString = builder.Configuration["ConnectionStrings:DatabaseConnectionString"];
+    whitePieDbDatabaseName = builder.Configuration["WhitePieDbSettings:DatabaseName"];
+}
+else
+{
+    whitePieDbConnectionString = Environment.GetEnvironmentVariable("MongoDb_ConnectionString");
+    whitePieDbDatabaseName = Environment.GetEnvironmentVariable("MongoDb_DatabaseName");
+}
 
 builder.Services.AddSingleton(new MongoDbContext(whitePieDbConnectionString, whitePieDbDatabaseName));
 builder.Services.AddScoped<IMomentService, MomentService>();
