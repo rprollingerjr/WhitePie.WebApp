@@ -18,7 +18,7 @@ namespace WhitePie.WebApp.Data
             _momentBucket = new GridFSBucket(_database, new GridFSBucketOptions
             {
                 BucketName = "momentfiles",
-                ReadPreference = ReadPreference.Primary
+                ReadPreference = ReadPreference.Primary 
             });
         }
 
