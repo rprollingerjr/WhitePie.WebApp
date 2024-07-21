@@ -1,16 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WhitePie.Services;
 using WhitePie.ViewModels.Events;
+using WhitePie.WebApp.Services.Interfaces;
 
-namespace WhitePie.Controllers
+namespace WhitePie.WebApp.Controllers
 {
     [Route("[controller]")]
-    public class EventsController : Controller
+    public class EventsController : BaseController<EventsController>
     {
-        private readonly EventsService _eventsService;
-        public EventsController(EventsService eventsService)
+        private readonly IEventService _eventService;
+        public EventsController(IEventService eventService)
         {
-            _eventsService = eventsService;
+            _eventService = eventService;
         }
 
         public async Task<IActionResult> Index()
@@ -19,7 +20,7 @@ namespace WhitePie.Controllers
 
             try
             {
-                var events = await _eventsService.GetAsync();
+                var events = await _eventService.GetAllEventsAsync();
                 events = events.OrderBy(_ => _.EventStartDate).ToList();
 
                 if (events.Any())
@@ -31,7 +32,7 @@ namespace WhitePie.Controllers
                         var newEvent = new EventItemViewModel()
                         {
                             EventTitle = item.EventName,
-                            Location = item.Location,
+                            City = item.Location,
                             Venue = item.Venue,
                             EventDescription = item.EventDescription,
                             EventTimeInfo = ParseEventDate(item.EventStartDate.Value, item.EventEndDate.Value),

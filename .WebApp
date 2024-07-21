@@ -1,0 +1,9 @@
+System.IO.FileNotFoundException: The project file 'C:\Users\malak\source\repos\rprollingerjr\WhitePie.WebApp\WhitePie' does not exist.
+   at MsBuildProjectFinder.FindMsBuildProject(String project)
+   at UserSecretsCreator.ResolveProjectPath(String name, String path)
+   at UserSecretsCreator.CreateUserSecretsId(IReporter reporter, String project, String workingDirectory, String overrideId)
+   at Microsoft.Extensions.SecretManager.Tools.Internal.InitCommand.Execute(CommandContext context)
+   at Microsoft.Extensions.SecretManager.Tools.Internal.InitCommand.Execute(CommandContext context, String workingDirectory)
+   at Microsoft.Extensions.SecretManager.Tools.Internal.InitCommandFactory.Execute(CommandContext context, String workingDirectory)
+   at Microsoft.Extensions.SecretManager.Tools.Program.RunInternal(String[] args)
+   at Microsoft.Extensions.SecretManager.Tools.Program.TryRun(String[] args, Int32& returnCode)

@@ -5,7 +5,7 @@ using MimeKit;
 
 namespace WhitePie.WebApp.Controllers
 {
-    public class ContactController : Controller
+    public class ContactController : BaseController<ContactController>
     {
         public IActionResult Index()
         {

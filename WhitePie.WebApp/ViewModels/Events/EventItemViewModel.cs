@@ -4,7 +4,8 @@
     {
         public string EventTitle { get; set; }
         public string Venue { get; set; }
-        public string Location { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
         public EventTime EventTimeInfo { get; set; }
         public string EventDescription { get; set; }
         public string TicketUrl { get; set; }

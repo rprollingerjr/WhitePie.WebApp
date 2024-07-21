@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Authentication.Certificate;
-using WhitePie.Models.Settings;
 using WhitePie.Services;
+using WhitePie.WebApp.Data;
+using WhitePie.WebApp.Data.Interfaces;
+using WhitePie.WebApp.Data.Repositories;
+using WhitePie.WebApp.Services.Interfaces;
+using WhitePie.WebApp.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,17 +14,24 @@ builder.Services.AddControllersWithViews();
 //Add Certificate 
 builder.Services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme)
     .AddCertificate();
-    builder.Services.Configure<WhitePieDatabaseSettings>(
-    builder.Environment.IsDevelopment() ?
-    builder.Configuration.GetSection("DevelopmentWhitePieDatabase") :
-    builder.Configuration.GetSection("WhitePieDatabase"));
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables()
+    .AddUserSecrets<Program>();
 
-builder.Services.AddSingleton<MomentsService>();
-builder.Services.AddSingleton<EventsService>();
+var whitePieDbConnectionString = builder.Configuration["ConnectionStrings:DatabaseConnectionString"];
+var whitePieDbDatabaseName = builder.Configuration["WhitePieDbSettings:DatabaseName"];
+
+builder.Services.AddSingleton(new MongoDbContext(whitePieDbConnectionString, whitePieDbDatabaseName));
+builder.Services.AddScoped<IMomentService, MomentService>();
+builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<IEventRepository, EventRepository>();
+builder.Services.AddScoped<IMomentRepository, MomentRepository>();
 
 var app = builder.Build();
 
-app.UseAuthentication();
+app.UseMiddleware<MaintenanceMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -31,11 +42,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseAuthentication();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
