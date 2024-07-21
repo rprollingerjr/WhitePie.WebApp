@@ -30,7 +30,7 @@ namespace WhitePie.WebApp.Controllers
 
                 foreach (var moment in moments) 
                 {
-                    viewModel.MomentsViewModel.Add(new MomentsViewModel(moment));
+                    viewModel.MomentsViewModel.Add(new MomentsViewModel(moment)); 
                 }
             }
             catch (Exception ex)
