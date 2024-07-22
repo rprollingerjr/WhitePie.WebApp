@@ -41,8 +41,6 @@ builder.Services.AddScoped<IMomentRepository, MomentRepository>();
 
 var app = builder.Build();
 
-app.UseMiddleware<MaintenanceMiddleware>();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -57,6 +55,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
+app.UseMiddleware<MaintenanceMiddleware>();
 
 app.MapControllerRoute(
     name: "default",
