@@ -2,7 +2,7 @@
   "scripts": {
     "build:sass": "sass wwwroot/assets/styles:wwwroot/assets/css"
   },
-  "dependencies": {
+  "devDependencies": {
     "sass": "^1.77.8"
   }
 }
