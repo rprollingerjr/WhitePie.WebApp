@@ -16,7 +16,7 @@
     <PackageReference Include="MongoDB.Driver" Version="2.19.0" />
     <PackageReference Include="MongoDB.Driver.GridFS" Version="2.19.0" />
 
-	  <None Update="src/css/**/*.css">
+	  <None Update="wwwroot/assets/css/**/*.css">
 		  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 	  </None>
   </ItemGroup>
