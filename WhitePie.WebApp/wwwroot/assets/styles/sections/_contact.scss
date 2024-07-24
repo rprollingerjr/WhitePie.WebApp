@@ -50,12 +50,13 @@
 
         input[type=text],
         input[type=email],
+        input[type=tel],
         textarea {
             font-size: 14px;
             padding: 10px 15px;
             box-shadow: none;
             border-radius: 0;
-            color: var(--default-color);
+            color: #000000;
             background-color: var(--surface-color);
             border-color: color-mix(in srgb, var(--default-color), transparent 80%);
 
@@ -64,7 +65,7 @@
             }
 
             &::placeholder {
-                color: color-mix(in srgb, var(--default-color), transparent 70%);
+                color: var(--default-color);
             }
         }
 
