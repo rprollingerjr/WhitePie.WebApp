@@ -17,8 +17,8 @@ builder.Services.AddAuthentication(CertificateAuthenticationDefaults.Authenticat
 builder.Configuration
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true)
-    .AddEnvironmentVariables()
-    .AddUserSecrets<Program>();
+    .AddUserSecrets<Program>()
+    .AddEnvironmentVariables();
 
 string whitePieDbConnectionString;
 string whitePieDbDatabaseName;

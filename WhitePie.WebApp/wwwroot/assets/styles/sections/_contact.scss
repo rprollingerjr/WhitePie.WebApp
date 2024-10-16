@@ -57,7 +57,7 @@
             box-shadow: none;
             border-radius: 0;
             color: #000000;
-            background-color: var(--surface-color);
+            background-color: var(--default-color);
             border-color: color-mix(in srgb, var(--default-color), transparent 80%);
 
             &:focus {
@@ -65,12 +65,12 @@
             }
 
             &::placeholder {
-                color: var(--default-color);
+                color: var(--surface-color);
             }
         }
 
         button[type="submit"] {
-            color: var(--default-color);
+            color: var(--surface-color);
             background: var(--accent-color);
             font-weight: 400;
             font-size: 14px;

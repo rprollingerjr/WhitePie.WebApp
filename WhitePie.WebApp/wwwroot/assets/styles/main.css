@@ -1,4 +1,4 @@
-/*--------------------------------------------------------------
+﻿/*--------------------------------------------------------------
 # Font & Color Variables
 # Help: https://bootstrapmade.com/color-system/
 --------------------------------------------------------------*/
@@ -481,7 +481,6 @@ h6 {
 # Global Footer
 --------------------------------------------------------------*/
 .footer {
-  --background-color: color-mix(in srgb, var(--default-color), transparent 95%);
   border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
   color: var(--default-color);
   background-color: var(--background-color);
@@ -749,11 +748,11 @@ body {
 .single_event .event_details {
   background: #FFCE00;
   padding: 30px 25px;
-  color: #ffffff;
+  color: #000000;
 }
 
 .single_event .event_details .date {
-  color: #ffffff;
+  color: #000000;
   padding-right: 15px;
   border-right: 2px solid #fff;
   font-family: "Rubik", sans-serif;
@@ -1082,7 +1081,7 @@ body {
   box-shadow: none;
   border-radius: 0;
   color: #000000;
-  background-color: var(--surface-color);
+  background-color: var(--default-color);
   border-color: color-mix(in srgb, var(--default-color), transparent 80%);
 }
 .contact .php-email-form input[type=text]:focus,
@@ -1095,10 +1094,10 @@ body {
 .contact .php-email-form input[type=email]::placeholder,
 .contact .php-email-form input[type=tel]::placeholder,
 .contact .php-email-form textarea::placeholder {
-  color: var(--default-color);
+  color: var(--surface-color);
 }
 .contact .php-email-form button[type=submit] {
-  color: var(--default-color);
+  color: var(--surface-color);
   background: var(--accent-color);
   font-weight: 400;
   font-size: 14px;
@@ -1114,5 +1113,3 @@ body {
 .contact .php-email-form button[type=submit]:hover {
   background-color: color-mix(in srgb, var(--accent-color) 90%, white 10%);
 }
-
-/*# sourceMappingURL=main.css.map */

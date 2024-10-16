@@ -18,20 +18,25 @@
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
     <!-- Carousel wrapper -->
-     <div id="carouselVideoExample" data-mdb-carousel-init class="carousel slide carousel-fade" data-mdb-ride="carousel">
+     @* <div id="carouselVideoExample" data-mdb-carousel-init class="carousel slide carousel-fade" data-mdb-ride="carousel">
 
         <!-- Inner -->
         <div class="carousel-inner">
             <!-- Single item -->
             <div class="carousel-item active">
-                <video class="img-fluid" autoplay loop controls>
+                <video class="img-fluid" autoplay loop controls muted>
                     <source src="~/assets/video/historyofpizza.mp4" type="video/mp4" />
                 </video>
             </div>
         </div>
-    </div>
+    </div> *@
     <!-- Carousel wrapper -->
+    <img src="~/assets/img/handtoss.jpg" class="img-thumbnail w-50" alt="Cinque Terre">
 </section><!-- End Hero Section -->
+
+<div class="container py-5">
+
+</div>
 
 <!-- ======= Events Section ======= -->
 <div class="container py-5">
@@ -44,7 +49,7 @@
     <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
                 @if (Model.EventsViewModel.UpcomingEvents.Count == 0)
                 {
-                    <span>No upcoming events, <a href="https://instagram.com/ediblemam1" target="_blank">follow us on Instagram in the meantime!</a></span>
+                    <span>No upcoming events, <a href="https://instagram.com/ediblemamipizza" target="_blank">follow us on Instagram in the meantime!</a></span>
                 }
                 else
                 {
@@ -67,7 +72,7 @@
                                         <div class="px-3">
                                         @if (!string.IsNullOrWhiteSpace(item.TicketUrl))
                                         {
-                                            <a href="@item.TicketUrl" class="btn btn-danger rounded-0 mt-3">Visit Site</a>
+                                            <a href="@item.TicketUrl" target="_blank" class="btn btn-danger rounded-0 mt-3">Visit Site</a>
                                         }
                                         else
                                         {
