@@ -17,20 +17,25 @@
             if (maintenanceMode)
             {
                 // Check if the request path is not the maintenance page
-                if (!context.Request.Path.Value.Contains("/maintenance") && !IsExternalRequest(context))
+                if (!context.Request.Path.Value.Contains("/maintenance") && !context.Request.Path.Value.Equals("/") && !IsExternalRequest(context))
                 {
                     context.Response.Redirect("/maintenance");
                     return;
                 }
             }
+            else if (context.Request.Path.Value.Contains("/maintenance"))
+            {
+                context.Response.Redirect("/");
+                return;
+            }
 
             await _next(context);
         }
 
-        private bool IsExternalRequest(HttpContext context)
+        private static bool IsExternalRequest(HttpContext context)
         {
             var requestPath = context.Request.Path.Value;
-        return !requestPath.StartsWith("/");
+            return !requestPath.StartsWith("/");
         }
     }
 }

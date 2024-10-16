@@ -3,7 +3,6 @@
 # Global Footer
 --------------------------------------------------------------*/
 .footer {
-    --background-color: color-mix(in srgb, var(--default-color), transparent 95%);
     border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
     color: var(--default-color);
     background-color: var(--background-color);
