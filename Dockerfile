@@ -1,26 +1,34 @@
-# Stage 1: Build the application
+# Use the official .NET SDK image for building
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 
-# Copy solution and restore dependencies
-COPY WhitePie.WebApp.sln ./
-COPY WhitePie.WebApp/WhitePie.WebApp.csproj WhitePie.WebApp/
+# Copy csproj and restore as distinct layers
+COPY *.sln .
+COPY WhitePie.WebApp/*.csproj ./WhitePie.WebApp/
 RUN dotnet restore
 
-# Copy the remaining source code and publish
-COPY WhitePie.WebApp/. WhitePie.WebApp/
+# Copy the rest of the code
+COPY WhitePie.WebApp/. ./WhitePie.WebApp/
 WORKDIR /src/WhitePie.WebApp
+
+# Install Node.js (needed for npm/sass)
+RUN apt-get update && \
+    apt-get install -y curl && \
+    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install && \
+    npm run build:sass
+
+# Build the .NET app
 RUN dotnet publish -c Release -o /app/publish
 
-# Stage 2: Create the runtime image
+# Runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
 WORKDIR /app
-
-# Expose port 80
-EXPOSE 80
-
-# Copy the build output from the previous stage
 COPY --from=build /app/publish .
+
+# Expose port (update if necessary)
+EXPOSE 80
 
 # Start the application
 ENTRYPOINT ["dotnet", "WhitePie.WebApp.dll"]
