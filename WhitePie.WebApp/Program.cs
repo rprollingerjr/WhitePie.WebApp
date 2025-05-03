@@ -31,6 +31,7 @@ if (string.IsNullOrWhiteSpace(dbConnectionString) || string.IsNullOrWhiteSpace(d
     throw new InvalidOperationException("Database configuration is missing. Please ensure 'whitePieDbConnectionString' and 'whitePieDbDatabaseName' are set.");
 }
 
+
 // Register services and configure the app
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton(new MongoDbContext(dbConnectionString, dbDatabaseName));
