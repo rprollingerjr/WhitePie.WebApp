@@ -22,8 +22,8 @@ if (builder.Environment.IsDevelopment())
 var configuration = builder.Configuration;
 
 // Retrieve configuration values
-var dbConnectionString = configuration["whitePieDbConnectionString"];
-var dbDatabaseName = configuration["whitePieDbName"];
+var dbConnectionString = Environment.GetEnvironmentVariable("WhitePieDbConnectionString") ?? configuration["ConnectionStrings:DatabaseConnectionString"];
+var dbDatabaseName = Environment.GetEnvironmentVariable("WhitePieDbName") ?? configuration["WhitePieDbSettings:DatabaseName"];
 
 // Validate configuration values
 if (string.IsNullOrWhiteSpace(dbConnectionString) || string.IsNullOrWhiteSpace(dbDatabaseName))
